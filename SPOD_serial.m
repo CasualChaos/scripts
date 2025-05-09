@@ -109,12 +109,12 @@ data = data.';
 %   modes.
 VAR ='P';
 dt = 0.01;                       % dt
-nFFT = 8;                     % Size of the blocks
+nFFT = 600;                     % Size of the blocks
 ovlp = round(nFFT*0.75);               % overlap
-opts.savefft    = true;          % Save FFT blocks instead of keeping them in memory (to save RAM)
-modedir = "Modes_" + tot_samps +"samps";
-opts.savedir    = modedir;        % Save results to 'results' folder in the current directory
 nblk = floor((tot_samps-ovlp)/(nFFT-ovlp));
+opts.savefft    = true;          % Save FFT blocks instead of keeping them in memory (to save RAM)
+modedir = "Nfft" + nFFT + "-ovlp" + olvp + "-blks"+nblk;
+opts.savedir    = modedir;        % Save results to 'results' folder in the current directory
 
 [L,P,f] = spod(data,nFFT,[],ovlp,dt,opts);
 %% Plot some reference figures
